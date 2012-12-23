@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Clp" rel="Chapter" href="Clp.html"><link title="Types" rel="Section" href="#2_Types">
+<link title="Creating model" rel="Section" href="#2_Creatingmodel">
+<link title="Getters and setters of problem parameters" rel="Section" href="#2_Gettersandsettersofproblemparameters">
+<link title="Getters and setters of solver parameters" rel="Section" href="#2_Gettersandsettersofsolverparameters">
+<link title="Solver operations" rel="Section" href="#2_Solveroperations">
+<link title="Retrieving solutions" rel="Section" href="#2_Retrievingsolutions">
+<title>Clp</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_Clp.html">Clp</a></h1>
+<pre><span class="keyword">module</span> Clp: <code class="code">sig</code> <a href="Clp.html">..</a> <code class="code">end</code></pre><div class="info">
+ OCaml bindings to CLP (COIN-OR LP).
+<p>
+
+<br>
+<b>Author(s):</b> Yosuke Onoue<br>
+</div>
+<hr width="100%">
+<br>
+<h2 id="2_Types">Types</h2><br>
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
+
+<pre><code><span id="TYPEdirection"><span class="keyword">type</span> <code class="type"></code>direction</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdirection.Maximize"><span class="constructor">Maximize</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdirection.Minimize"><span class="constructor">Minimize</span></span></code></td>
+
+</tr></table>
+
+
+<pre><code><span id="TYPErow"><span class="keyword">type</span> <code class="type"></code>row</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrow.row_lower">row_lower</span>&nbsp;:<code class="type">float</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrow.row_upper">row_upper</span>&nbsp;:<code class="type">float</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrow.row_elements">row_elements</span>&nbsp;:<code class="type">(int * float) array</code>;</code></td>
+
+</tr></table>
+}
+
+
+<pre><code><span id="TYPEcolumn"><span class="keyword">type</span> <code class="type"></code>column</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcolumn.column_obj">column_obj</span>&nbsp;:<code class="type">float</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcolumn.column_lower">column_lower</span>&nbsp;:<code class="type">float</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcolumn.column_upper">column_upper</span>&nbsp;:<code class="type">float</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcolumn.column_elements">column_elements</span>&nbsp;:<code class="type">(int * float) array</code>;</code></td>
+
+</tr></table>
+}
+
+
+<br>
+<h2 id="2_Creatingmodel">Creating model</h2><br>
+<pre><span id="VALcreate"><span class="keyword">val</span> create</span> : <code class="type">unit -> <a href="Clp.html#TYPEt">t</a></code></pre><div class="info">
+<code class="code">create ()</code> returns new empty model.<br>
+</div>
+<br>
+<h2 id="2_Gettersandsettersofproblemparameters">Getters and setters of problem parameters</h2><br>
+<pre><span id="VALresize"><span class="keyword">val</span> resize</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> int -> int -> unit</code></pre><div class="info">
+<code class="code">resize model num_rows num_cols</code> modifies the size of <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALnumber_rows"><span class="keyword">val</span> number_rows</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> int</code></pre><div class="info">
+<code class="code">number_rows model</code> returns the number of rows of <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALnumber_columns"><span class="keyword">val</span> number_columns</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> int</code></pre><div class="info">
+<code class="code">number_columns model</code> returns the number of columns of <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALdirection"><span class="keyword">val</span> direction</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> <a href="Clp.html#TYPEdirection">direction</a></code></pre><div class="info">
+<code class="code">direction mode</code> returns the direction of <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALset_direction"><span class="keyword">val</span> set_direction</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> <a href="Clp.html#TYPEdirection">direction</a> -> unit</code></pre><div class="info">
+<code class="code">set_direction model d</code> modifies the direction of <code class="code">model</code> to <code class="code">d</code>.<br>
+</div>
+<pre><span id="VALadd_rows"><span class="keyword">val</span> add_rows</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> <a href="Clp.html#TYPErow">row</a> array -> unit</code></pre><div class="info">
+<code class="code">add_rows model rows</code> adds rows to <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALdelete_rows"><span class="keyword">val</span> delete_rows</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> int array -> unit</code></pre><div class="info">
+<code class="code">delete_rows model which</code> deletes rows from <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALadd_columns"><span class="keyword">val</span> add_columns</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> <a href="Clp.html#TYPEcolumn">column</a> array -> unit</code></pre><div class="info">
+<code class="code">add_columns model columns</code> adds columns to <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALdelete_columns"><span class="keyword">val</span> delete_columns</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> int array -> unit</code></pre><div class="info">
+<code class="code">delete_columns model which</code> deletes columns from <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALrow_lower"><span class="keyword">val</span> row_lower</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> float array</code></pre><div class="info">
+<code class="code">row_lower model</code> returns row lower values of <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALchange_row_lower"><span class="keyword">val</span> change_row_lower</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> float array -> unit</code></pre><div class="info">
+<code class="code">change_row_lower model v</code> modifies row lower values of <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALrow_upper"><span class="keyword">val</span> row_upper</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> float array</code></pre><div class="info">
+<code class="code">row_upper model</code> returns row upper values of <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALchange_row_upper"><span class="keyword">val</span> change_row_upper</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> float array -> unit</code></pre><div class="info">
+<code class="code">change_row_upper model v</code> modifies row upper values of <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALcolumn_lower"><span class="keyword">val</span> column_lower</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> float array</code></pre><div class="info">
+<code class="code">column_lower model</code> returns column lower values of <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALchange_column_lower"><span class="keyword">val</span> change_column_lower</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> float array -> unit</code></pre><div class="info">
+<code class="code">change_column_lower model v</code> modifies column lower values of <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALcolumn_upper"><span class="keyword">val</span> column_upper</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> float array</code></pre><div class="info">
+<code class="code">column_upper model</code> returns column upper values of <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALchange_column_upper"><span class="keyword">val</span> change_column_upper</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> float array -> unit</code></pre><div class="info">
+<code class="code">change_column_upper model v</code> modifies column upper values of <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALobjective_coefficients"><span class="keyword">val</span> objective_coefficients</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> float array</code></pre><div class="info">
+<code class="code">objective_coefficients model</code> returns objective coefficient values of
+ <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALchange_objective_coefficients"><span class="keyword">val</span> change_objective_coefficients</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> float array -> unit</code></pre><div class="info">
+<code class="code">change_objective_coefficients model v</code> modifies objective coefficient
+ values of <code class="code">model</code><br>
+</div>
+<br>
+<h2 id="2_Gettersandsettersofsolverparameters">Getters and setters of solver parameters</h2><br>
+<pre><span id="VALlog_level"><span class="keyword">val</span> log_level</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> int</code></pre><div class="info">
+<code class="code">log_level model</code> returns the log level of <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALset_log_level"><span class="keyword">val</span> set_log_level</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> int -> unit</code></pre><div class="info">
+<code class="code">set_log_level model l</code> modifies log level of <code class="code">model</code> to <code class="code">l</code>.<br>
+</div>
+<br>
+<h2 id="2_Solveroperations">Solver operations</h2><br>
+<pre><span id="VALprimal"><span class="keyword">val</span> primal</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> unit</code></pre><div class="info">
+<code class="code">primal model</code> solves <code class="code">model</code> using primal simplex method.<br>
+</div>
+<pre><span id="VALdual"><span class="keyword">val</span> dual</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> unit</code></pre><div class="info">
+<code class="code">dual model</code> solves <code class="code">model</code> using dual simplex method.<br>
+</div>
+<br>
+<h2 id="2_Retrievingsolutions">Retrieving solutions</h2><br>
+<pre><span id="VALobjective_value"><span class="keyword">val</span> objective_value</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> float</code></pre><div class="info">
+<code class="code">objective_value model</code> returns the objective value of <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALprimal_row_solution"><span class="keyword">val</span> primal_row_solution</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> float array</code></pre><div class="info">
+<code class="code">primal_row_solution model</code> returns the primal row solution of <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALprimal_column_solution"><span class="keyword">val</span> primal_column_solution</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> float array</code></pre><div class="info">
+<code class="code">primal_row_solution model</code> returns the primal column solution of <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALdual_row_solution"><span class="keyword">val</span> dual_row_solution</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> float array</code></pre><div class="info">
+<code class="code">primal_row_solution model</code> returns the dual row solution of <code class="code">model</code>.<br>
+</div>
+<pre><span id="VALdual_column_solution"><span class="keyword">val</span> dual_column_solution</span> : <code class="type"><a href="Clp.html#TYPEt">t</a> -> float array</code></pre><div class="info">
+<code class="code">primal_row_solution model</code> returns the dual column solution of <code class="code">model</code>.<br>
+</div>
+</body></html>

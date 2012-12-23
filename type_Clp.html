@@ -1,0 +1,54 @@
+<html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Clp" rel="Chapter" href="Clp.html"><title>Clp</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;direction&nbsp;=&nbsp;<span class="constructor">Maximize</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Minimize</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;row&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;row_lower&nbsp;:&nbsp;float;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;row_upper&nbsp;:&nbsp;float;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;row_elements&nbsp;:&nbsp;(int&nbsp;*&nbsp;float)&nbsp;array;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;column&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;column_obj&nbsp;:&nbsp;float;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;column_lower&nbsp;:&nbsp;float;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;column_upper&nbsp;:&nbsp;float;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;column_elements&nbsp;:&nbsp;(int&nbsp;*&nbsp;float)&nbsp;array;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;create&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Clp</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;resize&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;number_rows&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;number_columns&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;direction&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Clp</span>.direction<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;set_direction&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Clp</span>.direction&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_rows&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Clp</span>.row&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;delete_rows&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_columns&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Clp</span>.column&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;delete_columns&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;row_lower&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;array<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;change_row_lower&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;row_upper&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;array<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;change_row_upper&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;column_lower&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;array<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;change_column_lower&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;column_upper&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;array<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;change_column_upper&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;objective_coefficients&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;array<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;change_objective_coefficients&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;array&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;log_level&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;set_log_level&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;primal&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;dual&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;objective_value&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;primal_row_solution&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;array<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;primal_column_solution&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;array<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;dual_row_solution&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;array<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;dual_column_solution&nbsp;:&nbsp;<span class="constructor">Clp</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;array<br>
+<span class="keyword">end</span></code></body></html>
