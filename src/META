@@ -1,0 +1,5 @@
+version = "0.1.0"
+description = "OCaml bindings to CLP"
+requires = ""
+archive(byte) = "clp.cma"
+archive(native) = "clp.cmxa"

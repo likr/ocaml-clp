@@ -1,0 +1,12 @@
+*.annot
+*.cmo
+*.cma
+*.cmi
+*.a
+*.o
+*.so
+*.cmx
+*.cmxs
+*.cmxa
+doc
+test/test_clp
